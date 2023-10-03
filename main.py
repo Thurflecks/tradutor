@@ -8,7 +8,7 @@ import os
 
 root = Tk()
 root.geometry('400x500')
-root.title('                                                Tradutor')
+root.title('                                                Tradutor ')
 root.maxsize(400, 500)
 root.minsize(400, 500)
 root.iconbitmap('ico.ico')
