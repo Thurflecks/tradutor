@@ -5,7 +5,6 @@ import translate
 import os
 
 
-
 root = Tk()
 root.geometry('400x500')
 root.title('                                                Tradutor ')
@@ -14,7 +13,19 @@ root.minsize(400, 500)
 root.iconbitmap('ico.ico')
 root.configure(background='black')
 
-
+def get_bt1():
+    lang1 = en2.get()
+    lang3 = en3.get()
+    while True:
+        if lang1 == 'pt-br' or 'en' or 'es':
+            return
+        elif lang3 == 'pt-br' or 'en' or 'es':
+            return
+        else:
+            lb2.configure(text=('Idioma Inválido'))
+            continue
+            
+           
 
 def get_bem_vindo():
     nome_usuario = os.getlogin()
@@ -25,9 +36,10 @@ def get_bt():
     dados = en.get()
     lang1 = en2.get()
     lang3 = en3.get()
-    trad = Translator(from_lang=lang1, to_lang=lang3)
+    trad = Translator(from_lang=(lang1), to_lang=(lang3))
     saida = trad.translate(str(dados))
     lb2.configure(text=(saida))
+            
     
         
     
@@ -66,6 +78,9 @@ en.place(x=90, y=260)
 bt = Button(font='Arial 13', bg = '#000', fg = '#e827ea', text='Traduzir', command=get_bt)
 bt.place(x=155, y=310)
 
+bt1 = Button(font='Arial 13', bg = '#000', fg = '#e827ea', text='verificar', command=get_bt1)
+bt1.place(x=330, y=177)
+
 lb3 = Label(root, font='Gabriola 19', text='Tradução:', bg = '#000', fg = 'White')
 lb3.place(x=145, y=360)
 
@@ -74,6 +89,7 @@ lb2.place(x=130, y=420)
 
 get_bt()
 get_bem_vindo()
+get_bt1()
 
 
 root.mainloop()
