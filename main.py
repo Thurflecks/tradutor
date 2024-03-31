@@ -17,7 +17,7 @@ def get_bt1():
     lang1 = en2.get()
     lang3 = en3.get()
     while True:
-        if lang1 == 'pt-br' or 'en' or 'es':
+        if lang1 == 'pt-br' or 'en' and 'es':
             return
         elif lang3 == 'pt-br' or 'en' or 'es':
             return
