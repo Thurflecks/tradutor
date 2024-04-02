@@ -27,16 +27,16 @@ def Onclick():
     if lang1 in ['pt-br', 'en', 'es'] and lang3 in ['pt-br', 'en', 'es']:
         lb2.configure(text=(' '))
     else:
-        messagebox.showerror("aviso:", "idioma incorreto")
+        messagebox.showerror("Aviso:", "Idioma incorreto")
         
 def copiar(): 
     if lb2["text"] == "":
-        messagebox.showinfo("aviso:", "nada copiado")
+        messagebox.showinfo("Aviso:", "Nada copiado")
     else:
         root.clipboard_clear()
         root.clipboard_append(lb2["text"])
         root.update()           
-        messagebox.showinfo("aviso:", "copiado")   
+        messagebox.showinfo("Aviso:", "Copiado")   
 
 def get_bem_vindo():
     nome_usuario = os.getlogin()
