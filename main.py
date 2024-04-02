@@ -3,6 +3,7 @@ from tkinter import *
 from translate import Translator
 import translate 
 import os
+from tkinter import messagebox
 
 
 root = Tk()
@@ -20,7 +21,7 @@ def Onclick():
     if lang1 and lang3 in ['pt-br', 'en', 'es']:
         lb2.configure(text=(' '))
     else:
-        lb2.configure(text=('Idioma Inválido'))
+        messagebox.showerror("aviso:", "idioma incorreto")
         
             
            
