@@ -1,78 +1,83 @@
-import tkinter as Tk
-from tkinter import *
+import customtkinter
+from customtkinter import *
 from translate import Translator
 import translate 
 import os
-from tkinter import messagebox
 
 
-root = Tk()
-root.geometry('410x500')
+root = customtkinter.CTk()
+root.geometry('410x550')
 root.title('                                                Tradutor ')
-root.maxsize(410, 500)
-root.minsize(410, 500)
-root.iconbitmap('ico.ico')
+root.maxsize(410, 550)
+root.minsize(410, 550)
+root.iconbitmap('tradutor.ico')
 root.configure(background='black')
 
+portugues = 'pt-br'
+espanhol = "es"
+ingles = "en"
+
+idiomas = [portugues, espanhol, ingles]
 
 def delelar():
     en.delete(0, "end")
     lb2.configure(text=(' '))
-    
+    aviso.configure(text="")
 
-def Onclick():
-    lang1 = en2.get()
-    lang3 = en3.get()
-    
-    if lang1 in ['pt-br', 'en', 'es'] and lang3 in ['pt-br', 'en', 'es']:
-        lb2.configure(text=(' '))
-    else:
-        messagebox.showerror("Aviso:", "Idioma incorreto")
         
 def copiar(): 
-    if lb2["text"] == "":
-        messagebox.showinfo("Aviso:", "Nada copiado")
+    if lb2.cget('text') == "":
+        aviso.configure(text=("Aviso: Nada copiado"))
     else:
         root.clipboard_clear()
-        root.clipboard_append(lb2["text"])
+        root.clipboard_append(aviso.cget('text'))
         root.update()           
-        messagebox.showinfo("Aviso:", "Copiado")   
+        aviso.configure(text=("Aviso: Copiado")) 
 
 def get_bem_vindo():
     nome_usuario = os.getlogin()
-    bem_vindo.config(text='Bem Vindo ao Tradutor dos Fellas ' + nome_usuario)
+    bem_vindo.configure(text='Bem Vindo ao Tradutor dos Fellas, ' + nome_usuario)
 
 
 def get_bt():
     dados = en.get()
-    lang1 = en2.get()
-    lang3 = en3.get()
-    trad = Translator(from_lang=(lang1), to_lang=(lang3))
-    saida = trad.translate(str(dados))
-    lb2.configure(text=(saida))
-            
+    if dados in ["", " "]:
+        lb2.configure(text=("Escreva algo para traduzir!"))
+    else:
+        dados = en.get()
+        lang1 = en2.get()
+        lang3 = en3.get()
+        trad = Translator(from_lang=(lang1), to_lang=(lang3))
+        saida = trad.translate(str(dados))
+        lb2.configure(text=(saida))
     
+            
+var = customtkinter.StringVar(root)
+var.set(idiomas[0])    
+
+var1 = customtkinter.StringVar(root)
+var1.set(idiomas[0]) 
         
     
-    
-bem_vindo = Label(root, font='Gabriola 18', bg = '#000', fg = '#e827ea')
-bem_vindo.place(x=45, y=10)   
 
-en2 = Entry(font='Arial 14')
-en2.place(x=90, y=98)
+bem_vindo = customtkinter.CTkLabel(root)
+bem_vindo.place(relx=0.5, y=20, anchor="center")   
+
+en2 = customtkinter.CTkOptionMenu(root, variable=var, values=idiomas)
+en2.place(relx=0.5, y=98, anchor="center")
 
    
-origem = Label(root, font='Arial 13', text='Selecione o idioma de origem: pt-br, en, es.', bg = '#000', fg = 'White')
-origem.place(x=50, y=60)
+origem = customtkinter.CTkLabel(root, text='Selecione o idioma de origem:')
+origem.place(relx=0.5, y=60, anchor="center")
 
 
 
-origem2 = Label(root, font='Arial 13', text='Selecione o idioma de saída: pt-br, en, es.', bg = '#000', fg = 'White')
-origem2.place(x=50, y=138)
+origem2 = customtkinter.CTkLabel(root, text='Selecione o idioma de saída:')
+origem2.place(relx=0.5, y=138, anchor="center")
 
 
-en3 = Entry(font='Arial 14')
-en3.place(x=90, y=177)
+en3 = customtkinter.CTkOptionMenu(root, variable=var1, values=idiomas)
+en3.place(relx=0.5, y=177, anchor="center")
 
 
 
@@ -80,32 +85,32 @@ lang1 = en3.get()
 lang3 = en3.get()
 
 
-lb1 = Label(root, font='Arial 13', text='Digite o que você deseja traduzir:', bg = '#000', fg = 'White')
-lb1.place(x=80, y=220)
+lb1 = customtkinter.CTkLabel(root, text='Digite o que você deseja traduzir:')
+lb1.place(relx=0.5, y=220, anchor="center")
 
-en = Entry(font='Arial 14')
-en.place(x=90, y=260)
+en = customtkinter.CTkEntry(root)
+en.place(relx=0.5, y=260, anchor="center")
 
-bt = Button(font='Arial 13', bg = '#000', fg = '#e827ea', text='Traduzir', command=get_bt)
-bt.place(x=160, y=310)
+bt = customtkinter.CTkButton(root, text='Traduzir', command=get_bt)
+bt.place(relx=0.5, y=310, anchor="center")
 
-bt1 = Button(font='Arial 13', bg = '#000', fg = '#e827ea', text='verificar', command=Onclick)
-bt1.place(x=330, y=175)
+lb3 = customtkinter.CTkLabel(root, text='Tradução:')
+lb3.place(relx=0.5, y=350, anchor='center')
 
-lb3 = Label(root, font='Gabriola 19', text='Tradução:', bg = '#000', fg = 'White')
-lb3.place(x=155, y=360)
+lb2 = customtkinter.CTkLabel(root, text='')
+lb2.place(relx=0.5, y=390, anchor="center")
 
-lb2 = Label(root, font='Gabriola 19', text='', bg = '#000', fg = 'White')
-lb2.place(x=130, y=405)
+bt_copiar = customtkinter.CTkButton(root, text='copiar', command=copiar)
+bt_copiar.place(relx=0.5, y=460, anchor="center")
 
-bt_copiar = Button(font='Arial 13', bg = '#000', fg = '#e827ea', text='copiar', command=copiar)
-bt_copiar.place(x=165, y=460)
+btDeletar = customtkinter.CTkButton(root, text='limpar', command=delelar, width= 1)
+btDeletar.place(x=310, y=246)
 
-btDeletar = Button(font='Arial 13', bg = '#000', fg = '#e827ea', text='limpar', command=delelar, height= 1)
-btDeletar.place(x=330, y=257)
+aviso = customtkinter.CTkLabel(root, text='')
+aviso.place(relx=0.5, y=500, anchor="center")
 
 
-get_bt()
+
 get_bem_vindo()
 
 
