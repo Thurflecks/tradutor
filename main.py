@@ -7,10 +7,10 @@ import os
 
 root = customtkinter.CTk()
 root.geometry('410x550')
-root.title('                                                Tradutor ')
+root.title('Tradutor ')
 root.maxsize(410, 550)
 root.minsize(410, 550)
-root.iconbitmap('tradutor.ico')
+#root.iconbitmap('tradutor.ico')
 root.configure(background='black')
 
 portugues = 'pt-br'
@@ -32,7 +32,7 @@ def copiar():
         root.clipboard_clear()
         root.clipboard_append(aviso.cget('text'))
         root.update()           
-        aviso.configure(text=("Aviso: Copiado")) 
+        aviso.configure(text=("Copiado")) 
 
 def get_bem_vindo():
     nome_usuario = os.getlogin()
@@ -88,7 +88,7 @@ lang3 = en3.get()
 lb1 = customtkinter.CTkLabel(root, text='Digite o que você deseja traduzir:')
 lb1.place(relx=0.5, y=220, anchor="center")
 
-en = customtkinter.CTkEntry(root)
+en = customtkinter.CTkEntry(root, width=270)
 en.place(relx=0.5, y=260, anchor="center")
 
 bt = customtkinter.CTkButton(root, text='Traduzir', command=get_bt)
@@ -104,7 +104,7 @@ bt_copiar = customtkinter.CTkButton(root, text='copiar', command=copiar)
 bt_copiar.place(relx=0.5, y=460, anchor="center")
 
 btDeletar = customtkinter.CTkButton(root, text='limpar', command=delelar, width= 1)
-btDeletar.place(x=310, y=246)
+btDeletar.place(x=345, y=246)
 
 aviso = customtkinter.CTkLabel(root, text='')
 aviso.place(relx=0.5, y=500, anchor="center")

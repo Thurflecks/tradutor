@@ -24,6 +24,7 @@ Você pode acessar o repositório no GitHub: [Tradutor](https://github.com/Thurf
 - Bibliotecas:
   - `customtkinter`
   - `googletrans==4.0.0-rc1`
+  - `translate`
 
 ## Instalação Local
 
@@ -62,7 +63,7 @@ Para rodar o projeto localmente, siga os passos abaixo:
 4. **Instale as dependências necessárias:**
 
     ```bash
-    pip install customtkinter googletrans==4.0.0-rc1
+    pip install customtkinter googletrans==4.0.0-rc1 translate
     ```
 
 5. **Execute o script principal:**
@@ -103,9 +104,6 @@ Contribuições são bem-vindas! Se você deseja melhorar este projeto, siga os 
 
 5. **Abra um Pull Request**
 
-## Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Agradecimentos
 
